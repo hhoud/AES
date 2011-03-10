@@ -1,0 +1,9 @@
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\bin\Debug\AES-encryptie.exe
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\bin\Debug\AES-encryptie.pdb
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\obj\x86\Debug\AES_encryptie.Form1.resources
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\obj\x86\Debug\AES_encryptie.Properties.Resources.resources
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\obj\x86\Debug\AES-encryptie.exe
+C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-encryptie\obj\x86\Debug\AES-encryptie.pdb
