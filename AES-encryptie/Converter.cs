@@ -2,12 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace AES_encryptie
 {
     class Converter
     {
 
+        public BitArray convertByteToBitArray(byte b) {
+            BitArray bits = new BitArray(b);
+            return bits;
+        }
+
+        public BitArray convertByteArrayToBitArray(byte[] bytes)
+        {
+            BitArray bits = new BitArray(bytes);
+            return bits;
+        }
+
+
+        public byte convertBitArraytoByte(BitArray bits)
+        {
+            if (bits.Count != 8)
+            {
+                throw new ArgumentException("bits");
+            }
+            byte[] bytes = new byte[1];
+            bits.CopyTo(bytes, 0);
+            return bytes[0];
+        }
 
         public byte[] FileToByteArray(string _FileName)
         {
