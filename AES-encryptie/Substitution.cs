@@ -27,21 +27,27 @@ namespace AES_encryptie
                          ,0xe1 ,0xf8 ,0x98 ,0x11 ,0x69 ,0xd9 ,0x8e ,0x94 ,0x9b ,0x1e ,0x87 ,0xe9 ,0xce ,0x55 ,0x28 ,0xdf
                          ,0x8c ,0xa1 ,0x89 ,0x0d ,0xbf ,0xe6 ,0x42 ,0x68 ,0x41 ,0x99 ,0x2d ,0x0f ,0xb0 ,0x54 ,0xbb ,0x16};
 
-        public byte[] substitute(byte[] data) {
+        public byte[,] substitute(byte[,] data) {
             return switchBytes(data, generateSBoxes());
+
         }
 
+
         // This function will get a value from the s-box based on the byte in the array
-        private byte[] switchBytes(byte[] data, byte[,] sbox)
+        private byte[,] switchBytes(byte[,] data, byte[,] sbox)
         {
             // Loop over all the bytes of the data
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < 3; i++)
             {
-                // Get the sbox value by using the 4 left bits as row index, and 4 right bits for column index
-                // To get the 4 left bits an AND is done with 1111 0000 and a shift of 4 bits
-                // To get the 4 right bits and AND is done with 0000 1111 and NO shift
-                // These 2 are the indexes of the sbox matrix
-                data[i] = sbox[(((data[i] & 240) >> 4) & 0xFF), (data[i] & 15) ];
+                for (int j = 0; j < 3; j++)
+                {
+                    int k = i + j;
+                    // Get the sbox value by using the 4 left bits as row index, and 4 right bits for column index
+                    // To get the 4 left bits an AND is done with 1111 0000 and a shift of 4 bits
+                    // To get the 4 right bits and AND is done with 0000 1111 and NO shift
+                    // These 2 are the indexes of the sbox matrix
+                    data[i,j] = sbox[(((data[i,j] & 240) >> 4) & 0xFF), (data[i,j] & 15)];
+               } 
             }
 
             return data;
