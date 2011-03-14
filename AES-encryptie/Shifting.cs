@@ -7,7 +7,7 @@ namespace AES_encryptie
 {
     class Shifting
     {
-        public byte[,] shiftRows(byte[,] data)
+        public byte[,] shiftRows(byte[,] block)
         {
             //Create an empty byte array which will contain the shifted matrix.
             byte[,] shifted = new byte[4,4];
@@ -19,7 +19,7 @@ namespace AES_encryptie
                     //Copy the bytes to the left depending on the row.
                     //The first row doesn't change, the second is shifted one to the 
                     //left and the first bytes are appended at the end of the row.
-                    shifted[i, j] = data[i, (i + j)%4];
+                    shifted[i, j] = block[i, (i + j)%4];
                 }
             }
             return shifted;
