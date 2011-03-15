@@ -21,6 +21,7 @@ namespace AES_encryptie
         Converter converter = new Converter();
         Substitution subs = new Substitution();
         Shifting shifter = new Shifting();
+        Mixing mixer = new Mixing();
 
         //An object for the 1st step of an AES round
         Substitution substitution = new Substitution();
@@ -44,8 +45,8 @@ namespace AES_encryptie
 
            //Convert the file into an array of bytes
            //1ste step = Substitution
-
-           shifter.shiftRows(subs.substitute(aes.convertByteArrayToSingleMatrix(converter.FileToByteArray(file))));
+           
+            mixer.mixColumns(shifter.shiftRows(subs.substitute(aes.convertByteArrayToSingleMatrix(converter.FileToByteArray(file)))));
            
         }
     }
