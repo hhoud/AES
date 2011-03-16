@@ -22,6 +22,8 @@ namespace AES_encryptie
         Substitution subs = new Substitution();
         Shifting shifter = new Shifting();
         Mixing mixer = new Mixing();
+        keyGen keygen = new keyGen();
+        Addition addition = new Addition();
 
         //An object for the 1st step of an AES round
         Substitution substitution = new Substitution();
@@ -43,11 +45,48 @@ namespace AES_encryptie
            // Get the extention of the loaded file
            ext =  System.IO.Path.GetExtension(file);
 
+           List<byte[,]> data = new List<byte[,]>();
+
            //Convert the file into an array of bytes
-           //1ste step = Substitution
-           
-            mixer.mixColumns(shifter.shiftRows(subs.substitute(aes.convertByteArrayToSingleMatrix(converter.FileToByteArray(file)))));
-           
+           // Create the key
+          String key =  keygen.createKey();
+           keygen.KeyExpantsion(key);
+          byte[,] w= keygen.KeyExpansion();
+
+         /*byte[,] state =  addition.addKey(aes.convertByteArrayToSingleMatrix(converter.FileToByteArray(file)),w,0);
+
+          for (int round = 1; round <= 9; round++)
+          {
+              state = addition.addKey(mixer.mixColumns(shifter.shiftRows(subs.substitute(state))), w, round); ;
+          }
+
+          data.Add(state);
+           */
+            
+            
+            
+            byte[] datastream = converter.FileToByteArray(file);
+
+            for (int i = 0; i < datastream.Length / 16; i++)
+            {
+                byte[] block = new byte[16];
+                for(int j=0;j<16;j++)
+                {
+                    block[j] = datastream[i*16+j];
+                }
+
+                byte[,] state = addition.addKey(aes.convertTo2DArray(block), w, 0);
+
+                for (int round = 1; round <= 8; round++)
+                {
+                    state = addition.addKey(mixer.mixColumns(shifter.shiftRows(subs.substitute(state))), w, round);
+                }
+                state = addition.addKey(shifter.shiftRows(subs.substitute(state)),w,9);
+
+                data.Add(state);
+            }
+
+            Console.WriteLine("test");
         }
     }
 }

@@ -25,7 +25,7 @@ namespace AES_encryptie
         }
 
 
-        private byte[,] convertTo2DArray(byte[] p)
+        public byte[,] convertTo2DArray(byte[] p)
         {
             int k = 0;
             byte[,] matrix = new byte[4, 4];
