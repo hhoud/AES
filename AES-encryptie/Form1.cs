@@ -53,16 +53,6 @@ namespace AES_encryptie
            keygen.KeyExpantsion(key);
           byte[,] w= keygen.KeyExpansion();
 
-         /*byte[,] state =  addition.addKey(aes.convertByteArrayToSingleMatrix(converter.FileToByteArray(file)),w,0);
-
-          for (int round = 1; round <= 9; round++)
-          {
-              state = addition.addKey(mixer.mixColumns(shifter.shiftRows(subs.substitute(state))), w, round); ;
-          }
-
-          data.Add(state);
-           */
-            
             
             
             byte[] datastream = converter.FileToByteArray(file);
@@ -84,9 +74,10 @@ namespace AES_encryptie
                 state = addition.addKey(shifter.shiftRows(subs.substitute(state)),w,9);
 
                 data.Add(state);
+
             }
 
-            Console.WriteLine("test");
+            converter.convertMatrixArrayToByteArray(data,datastream.Length); 
         }
     }
 }

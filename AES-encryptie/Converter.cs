@@ -67,5 +67,26 @@ namespace AES_encryptie
             return _Buffer;
 
         }
+
+        public byte[] convertMatrixArrayToByteArray(List<byte[,]> data,int length)
+        {
+            byte[] dataStream = new byte[length];
+            int k =0;
+            foreach (byte[,] matrix in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        dataStream[k] = matrix[i, j];
+                        k++;
+                    }
+                }
+            }
+            Console.WriteLine(dataStream);
+           
+
+            return null;
+        }
     }
 }
