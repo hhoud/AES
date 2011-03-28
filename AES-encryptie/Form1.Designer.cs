@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPath = new System.Windows.Forms.TextBox();
             this.btnGetData = new System.Windows.Forms.Button();
+            this.txtPath = new System.Windows.Forms.TextBox();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -46,13 +46,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Encryptie";
             // 
-            // txtPath
-            // 
-            this.txtPath.Location = new System.Drawing.Point(16, 33);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(448, 20);
-            this.txtPath.TabIndex = 0;
-            // 
             // btnGetData
             // 
             this.btnGetData.Location = new System.Drawing.Point(498, 19);
@@ -62,6 +55,13 @@
             this.btnGetData.Text = "Get Data";
             this.btnGetData.UseVisualStyleBackColor = true;
             this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
+            // 
+            // txtPath
+            // 
+            this.txtPath.Location = new System.Drawing.Point(16, 33);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(448, 20);
+            this.txtPath.TabIndex = 0;
             // 
             // ofd
             // 
