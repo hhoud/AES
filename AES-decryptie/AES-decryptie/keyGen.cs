@@ -9,7 +9,7 @@ namespace AES_decryptie
     public class keyGen
     {
         private int Nb = 4;
-        private int Nk = 4;
+        private int Nk = 4; //8 bij 256
         private int Nr = 10;
         private byte[] key;
         private byte[,] w;
@@ -21,6 +21,24 @@ namespace AES_decryptie
             BuildRcon();
             BuildSbox();
 
+        }
+
+
+        public string ReadFromFile(string filename)
+        {
+            StreamReader SR;
+            String key ="";
+            string S;
+            SR = File.OpenText(filename);
+            S = SR.ReadLine();
+            while (S != null)
+            {
+                Console.WriteLine(S);
+                key = S;
+                S = SR.ReadLine();
+            }
+            SR.Close();
+            return key;
         }
 
         private byte[] SubWord(byte[] word)
