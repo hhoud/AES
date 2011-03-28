@@ -8,7 +8,7 @@ namespace AES_encryptie
 {
     class Converter
     {
-
+        private byte[] _bufferReal;
         public BitArray convertByteToBitArray(byte b) {
             BitArray bits = new BitArray(b);
             return bits;
@@ -36,6 +36,7 @@ namespace AES_encryptie
         {
 
             byte[] _Buffer = null;
+            
 
             try
             {
@@ -50,8 +51,9 @@ namespace AES_encryptie
                 long _TotalBytes = new System.IO.FileInfo(_FileName).Length;
 
                 // read entire file into buffer
-                _Buffer = _BinaryReader.ReadBytes((Int32)_TotalBytes);
-
+                _Buffer = _BinaryReader.ReadBytes((Int32)(_TotalBytes + 16 - (_TotalBytes % 16)));
+                _bufferReal = new byte[_TotalBytes + 16 - (_TotalBytes % 16)];
+                _Buffer.CopyTo(_bufferReal,0);
                 // close file reader
                 _FileStream.Close();
                 _FileStream.Dispose();
@@ -64,7 +66,17 @@ namespace AES_encryptie
                 Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
             }
 
-            return _Buffer;
+            int toPad;
+            if ((_Buffer.Length % 16) != 0)
+            {
+                toPad = 16 - (_Buffer.Length % 16);
+                for (int i = 0; i < toPad; i++)
+                {
+                    _bufferReal[_Buffer.Length+i] = Convert.ToByte(toPad);
+                    
+                }
+            }
+            return _bufferReal;
 
         }
 
@@ -74,19 +86,18 @@ namespace AES_encryptie
             int k =0;
             foreach (byte[,] matrix in data)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i <= 3; i++)
                 {
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j <= 3; j++)
                     {
                         dataStream[k] = matrix[i, j];
                         k++;
                     }
                 }
             }
-            Console.WriteLine(dataStream);
-           
+        
 
-            return null;
+            return dataStream;
         }
     }
 }

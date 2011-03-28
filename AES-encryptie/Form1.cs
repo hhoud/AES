@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace AES_encryptie
 {
@@ -77,7 +78,28 @@ namespace AES_encryptie
 
             }
 
-            converter.convertMatrixArrayToByteArray(data,datastream.Length); 
+            string saveTo = System.IO.Path.GetFileNameWithoutExtension(file)+"_encr"+ext ;
+            // create a write stream
+            FileStream writeStream = new FileStream(saveTo, FileMode.Create, FileAccess.Write);
+            // write to the stream
+            MemoryStream readStream = new MemoryStream(converter.convertMatrixArrayToByteArray(data, datastream.Length));
+            ReadWriteStream(readStream, writeStream);
+        }
+
+        private void ReadWriteStream(Stream readStream, Stream writeStream) 
+        {
+            int Length = 256;
+            Byte [] buffer = new Byte[Length];
+            int bytesRead = readStream.Read(buffer,0,Length);
+            // write the required bytes
+            while( bytesRead > 0 ) 
+            {
+                writeStream.Write(buffer,0,bytesRead);
+
+                bytesRead = readStream.Read(buffer, 0, Length);
+            }
+            readStream.Close();
+            writeStream.Close();
         }
     }
 }
