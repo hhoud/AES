@@ -78,7 +78,7 @@ namespace AES_decryptie
                 {
                     for (int j = 0; j <= 3; j++)
                     {
-                        dataStream[k] = matrix[i, j];
+                        dataStream[k] = matrix[j, i];
                         k++;
                     }
                 }

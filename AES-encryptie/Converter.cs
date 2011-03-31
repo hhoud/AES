@@ -51,8 +51,12 @@ namespace AES_encryptie
                 long _TotalBytes = new System.IO.FileInfo(_FileName).Length;
 
                 // read entire file into buffer
-                _Buffer = _BinaryReader.ReadBytes((Int32)(_TotalBytes + 16 - (_TotalBytes % 16)));
-                _bufferReal = new byte[_TotalBytes + 16 - (_TotalBytes % 16)];
+                _Buffer = _BinaryReader.ReadBytes((Int32)(_TotalBytes));
+                if (_TotalBytes % 16 != 0)
+                    _bufferReal = new byte[_TotalBytes + 16 - (_TotalBytes % 16)];
+                else
+                    _bufferReal = new byte[_TotalBytes];
+
                 _Buffer.CopyTo(_bufferReal,0);
                 // close file reader
                 _FileStream.Close();
@@ -90,7 +94,7 @@ namespace AES_encryptie
                 {
                     for (int j = 0; j <= 3; j++)
                     {
-                        dataStream[k] = matrix[i, j];
+                        dataStream[k] = matrix[j, i];
                         k++;
                     }
                 }

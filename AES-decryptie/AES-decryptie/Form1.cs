@@ -62,9 +62,9 @@ namespace AES_decryptie
                 }
 
 
-                byte[,] state = subs.substitute(shifter.shiftRows(addition.addKey(aes.convertTo2DArray(block), w, 9)));
+                byte[,] state = subs.substitute(shifter.shiftRows(addition.addKey(aes.convertTo2DArray(block), w, 10)));
 
-                for (int round = 8; round >= 1; round--)
+                for (int round = 9; round >= 1; round--)
                 {
                     state = subs.substitute(shifter.shiftRows(mixer.mixColumns(addition.addKey(state,w,round)))) ;
                 }

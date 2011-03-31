@@ -50,9 +50,9 @@ namespace AES_encryptie
 
            //Convert the file into an array of bytes
            // Create the key
-          String key =  keygen.createKey();
+           String key =  keygen.createKey();
            keygen.KeyExpantsion(key);
-          byte[,] w= keygen.KeyExpansion();
+           byte[,] w= keygen.KeyExpansion();
 
             
             
@@ -68,11 +68,11 @@ namespace AES_encryptie
 
                 byte[,] state = addition.addKey(aes.convertTo2DArray(block), w, 0);
 
-                for (int round = 1; round <= 8; round++)
+                for (int round = 1; round <= 9; round++)
                 {
                     state = addition.addKey(mixer.mixColumns(shifter.shiftRows(subs.substitute(state))), w, round);
                 }
-                state = addition.addKey(shifter.shiftRows(subs.substitute(state)),w,9);
+                state = addition.addKey(shifter.shiftRows(subs.substitute(state)),w,10);
 
                 data.Add(state);
 

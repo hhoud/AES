@@ -36,9 +36,9 @@ namespace AES_encryptie
         private byte[,] switchBytes(byte[,] data, byte[,] sbox)
         {
             // Loop over all the bytes of the data
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     int k = i + j;
                     // Get the sbox value by using the 4 left bits as row index, and 4 right bits for column index

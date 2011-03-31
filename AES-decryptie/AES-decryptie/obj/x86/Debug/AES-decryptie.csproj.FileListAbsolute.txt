@@ -15,3 +15,4 @@ C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-decryptie\AE
 C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-decryptie\AES-decryptie\obj\x86\Debug\AES_decryptie.Properties.Resources.resources
 C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-decryptie\AES-decryptie\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Ojtwist\Documents\ICT\It-Beveiliging\AES\AES-encryptie\AES-decryptie\AES-decryptie\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\1SCH_ICT\ITSecurity\Projecten\AES\AES-decryptie\AES-decryptie\obj\x86\Debug\AES_decryptie.Form1.resources

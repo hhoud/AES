@@ -33,7 +33,7 @@ namespace AES_decryptie
             {
                 for (int j = 0; j <= 3; j++)
                 {
-                    matrix[i, j] = p[k];
+                    matrix[j, i] = p[k];
                     k++;
                 }
             }
